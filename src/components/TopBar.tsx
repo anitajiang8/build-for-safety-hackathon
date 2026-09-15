@@ -16,6 +16,8 @@ interface Props {
   clock: string;
   tick: number;
   lastTick: number;
+  /** Returns to the alert triage screen. */
+  onBack: () => void;
 }
 
 export function TopBar({
@@ -31,16 +33,17 @@ export function TopBar({
   clock,
   tick,
   lastTick,
+  onBack,
 }: Props) {
   return (
     <header className="topbar">
-      <div className="topbar__brand">
+      <button className="topbar__brand" onClick={onBack} title="Back to alert">
         <span className="topbar__mark" aria-hidden="true" />
-        <div>
+        <div className="topbar__brand-text">
           <div className="topbar__name">Trailguard</div>
-          <div className="topbar__tagline">Privacy-first campus safety</div>
+          <div className="topbar__tagline">&larr; Back to alert</div>
         </div>
-      </div>
+      </button>
 
       <label className="topbar__field">
         <span className="topbar__label">Scenario</span>

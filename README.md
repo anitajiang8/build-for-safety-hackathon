@@ -57,11 +57,21 @@ Tiers: **0–39 Normal · 40–69 Watch · 70+ Respond**.
 
 ## 60-second demo script
 
+The app runs as three screens: **Safety Alerts board → alert triage → live
+operations dashboard**. `← Safety Alerts` and the Trailguard wordmark in the
+dashboard top bar walk back up the stack, so you can re-run the demo without a
+reload.
+
 **0:00 — Opening board.** The app starts on the Safety Alerts board. The filter
 tabs work — tap `[HIGH PRIORITY]` to show just the following pattern. Click the
-**FOLLOWING PATTERN** card (or `VIEW ALERT →`) to open the operations dashboard.
+**FOLLOWING PATTERN** card (or `VIEW ALERT →`).
 
-**0:05 — Set up.** Scenario `Following incident` (11:40 PM). Press **4x**, then
+**0:06 — Triage screen.** The alert opens with its own breakdown: the two tracks
+crossing a zone boundary, and the four signals rated HIGH / HIGH / MED / LOW with
+the engine term each one maps to. Click `[ DISPATCH NEAREST PATROL ]` — it marks
+dispatched — then `[ CONTINUE MONITORING ]` to open the live dashboard.
+
+**0:14 — Set up.** Scenario `Following incident` (11:40 PM). Press **4x**, then
 **Play**.
 
 **0:10 — Watch fires (~tick 19).** T-2 turns yellow on the map and a dashed line
@@ -108,7 +118,8 @@ src/
     followScore.ts  Pure scoring functions — no React, no I/O
     useSimulation.ts Playback, alert emission, audit log, operator actions
   components/       One component + one CSS file each
-                    (LandingScreen.tsx is the opening Safety Alerts board)
+                    LandingScreen.tsx  the opening Safety Alerts board
+                    AlertDetail.tsx    the alert triage screen
   styles/tokens.css All colors, spacing, radius and type tokens
 ```
 
