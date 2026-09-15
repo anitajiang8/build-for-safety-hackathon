@@ -51,13 +51,24 @@ export default function App() {
             </div>
           </div>
 
-          <div className="panel app__panel--audit">
-            <div className="panel__head">
-              <h2 className="panel__title">Audit log</h2>
-              <span className="app__count">{sim.audit.length}</span>
+          <div className="app__row">
+            <div className="panel app__panel--audit">
+              <div className="panel__head">
+                <h2 className="panel__title">Audit log</h2>
+                <span className="app__count">{sim.audit.length}</span>
+              </div>
+              <div className="panel__body">
+                <AuditLog entries={sim.audit} />
+              </div>
             </div>
-            <div className="panel__body">
-              <AuditLog entries={sim.audit} />
+
+            <div className="panel app__panel--phone">
+              <div className="panel__head">
+                <h2 className="panel__title">Walk Mode</h2>
+              </div>
+              <div className="panel__body">
+                <PhoneMock notification={sim.phone} clock={sim.clock} />
+              </div>
             </div>
           </div>
         </section>
@@ -72,16 +83,6 @@ export default function App() {
             </div>
             <div className="panel__body">
               {showStored ? <WhatsStored /> : <ScorePanel pair={sim.featured} />}
-            </div>
-          </div>
-
-          <div className="panel">
-            <div className="panel__head">
-              <h2 className="panel__title">Walk Mode</h2>
-              <span className="app__blurb">opt-in, zone-level only</span>
-            </div>
-            <div className="panel__body">
-              <PhoneMock notification={sim.phone} clock={sim.clock} />
             </div>
           </div>
         </section>
@@ -102,7 +103,13 @@ export default function App() {
               <h2 className="panel__title">Camera &middot; {watchedZone}</h2>
             </div>
             <div className="panel__body">
-              <CameraTile zone={watchedZone} token={watched} onBreakGlass={sim.breakGlass} />
+              {/* Keyed by run so a break-glass unblur never survives a reset. */}
+              <CameraTile
+                key={sim.runId}
+                zone={watchedZone}
+                token={watched}
+                onBreakGlass={sim.breakGlass}
+              />
             </div>
           </div>
         </section>

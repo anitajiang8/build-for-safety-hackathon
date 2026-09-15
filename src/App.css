@@ -24,12 +24,24 @@
 
 .app__panel--grow {
   flex: 1;
+  /* Keep the map usable even on a short viewport; the page scrolls instead. */
+  min-height: 300px;
+}
+
+.app__row {
+  display: flex;
+  gap: var(--space-4);
+  flex: 0 0 auto;
   min-height: 0;
 }
 
 .app__panel--audit {
-  flex: 0 0 200px;
+  flex: 1;
   min-height: 0;
+}
+
+.app__panel--phone {
+  flex: 0 0 216px;
 }
 
 /* Alerts must always have room for a Respond card and its three actions. */

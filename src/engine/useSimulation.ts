@@ -60,6 +60,8 @@ export function useSimulation() {
   const [alerts, setAlerts] = useState<Alert[]>([]);
   const [audit, setAudit] = useState<AuditEntry[]>([]);
   const [phone, setPhone] = useState<PhoneNotification | null>(null);
+  /** Bumped on every reset or scenario change so view state can be remounted. */
+  const [runId, setRunId] = useState(0);
 
   const scenario: Scenario = useMemo(
     () => SCENARIOS.find((s) => s.id === scenarioId) ?? SCENARIOS[0],
@@ -189,6 +191,7 @@ export function useSimulation() {
     setAlerts([]);
     setAudit([]);
     setPhone(null);
+    setRunId((n) => n + 1);
   }, []);
 
   const selectScenario = useCallback(
@@ -199,6 +202,7 @@ export function useSimulation() {
       setAlerts([]);
       setAudit([]);
       setPhone(null);
+      setRunId((n) => n + 1);
     },
     [],
   );
@@ -206,6 +210,7 @@ export function useSimulation() {
   return {
     scenario,
     scenarios: SCENARIOS,
+    runId,
     tick,
     lastTick,
     clock,
