@@ -1,0 +1,77 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+.app__main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(520px, 1.6fr) minmax(330px, 0.85fr) minmax(300px, 0.8fr);
+  gap: var(--space-4);
+  padding: var(--space-4);
+  overflow: auto;
+}
+
+.app__col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-height: 0;
+}
+
+.app__panel--grow {
+  flex: 1;
+  min-height: 0;
+}
+
+.app__panel--audit {
+  flex: 0 0 200px;
+  min-height: 0;
+}
+
+/* Alerts must always have room for a Respond card and its three actions. */
+.app__panel--alerts {
+  flex: 1;
+  min-height: 300px;
+}
+
+.app__map-body {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.app__blurb {
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+}
+
+.app__count {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  border: var(--border-thin);
+  border-radius: var(--radius-pill);
+  padding: 0 var(--space-2);
+}
+
+.app__toggle {
+  font-size: var(--text-xs);
+  color: var(--color-privacy);
+  background: var(--color-privacy-soft);
+  border: 1px solid var(--color-privacy);
+  border-radius: var(--radius-pill);
+  padding: 2px var(--space-3);
+}
+
+@media (max-width: 1240px) {
+  .app__main {
+    grid-template-columns: 1fr 1fr;
+  }
+  .app__col--right {
+    grid-column: span 2;
+  }
+}

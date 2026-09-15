@@ -1,0 +1,157 @@
+.camera {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.camera__stage {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: var(--border-thin);
+}
+
+.camera__frame {
+  display: block;
+  width: 100%;
+  filter: blur(9px) saturate(0.5);
+  transform: scale(1.08);
+  transition: filter 220ms ease;
+}
+
+.camera__frame.is-clear {
+  filter: blur(0.6px);
+}
+
+.camera__zone {
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  font-size: var(--text-xs);
+  font-family: var(--font-mono);
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: var(--radius-sm);
+  padding: 2px var(--space-2);
+  color: var(--color-text);
+}
+
+.camera__state {
+  position: absolute;
+  bottom: var(--space-2);
+  right: var(--space-2);
+  font-size: var(--text-xs);
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: var(--radius-sm);
+  padding: 2px var(--space-2);
+  color: var(--color-privacy);
+}
+
+.camera__state.is-clear {
+  color: var(--color-watch);
+}
+
+.camera__btn {
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  background: var(--color-surface-2);
+  border: var(--border-thin);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+}
+
+.camera__btn.is-primary {
+  border-color: var(--color-privacy);
+  color: var(--color-privacy);
+  background: var(--color-privacy-soft);
+}
+
+.camera__btn.is-danger {
+  border-color: var(--color-respond);
+  color: var(--color-respond);
+  background: var(--color-respond-soft);
+}
+
+.camera__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 6, 10, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  padding: var(--space-4);
+}
+
+.camera__modal {
+  background: var(--color-surface);
+  border: var(--border-thin);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  width: min(460px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.camera__modal-title {
+  margin: 0;
+  font-size: var(--text-lg);
+}
+
+.camera__modal-body {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.camera__modal-facts {
+  display: flex;
+  gap: var(--space-5);
+  margin: 0;
+}
+
+.camera__modal-facts dt {
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.camera__modal-facts dd {
+  margin: 2px 0 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+}
+
+.camera__modal-label {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-faint);
+}
+
+.camera__modal-input {
+  font: inherit;
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  background: var(--color-surface-2);
+  border: var(--border-thin);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2);
+  resize: vertical;
+}
+
+.camera__modal-input.is-error {
+  border-color: var(--color-respond);
+}
+
+.camera__modal-error {
+  font-size: var(--text-xs);
+  color: var(--color-respond);
+}
+
+.camera__modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+}

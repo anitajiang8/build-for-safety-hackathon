@@ -1,0 +1,100 @@
+.phone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.phone__screen {
+  width: 168px;
+  min-height: 236px;
+  background: #080b0f;
+  border: 2px solid var(--color-border);
+  border-radius: 20px;
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.phone__status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--text-xs);
+  font-family: var(--font-mono);
+  color: var(--color-text-faint);
+}
+
+.phone__walkmode {
+  color: var(--color-normal);
+  font-family: var(--font-sans);
+}
+
+.phone__idle {
+  margin-top: auto;
+  margin-bottom: auto;
+  text-align: center;
+}
+
+.phone__idle-title {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.phone__idle-body {
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+  line-height: 1.5;
+}
+
+.phone__notification {
+  background: var(--color-surface-2);
+  border: var(--border-thin);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  animation: phone-in 260ms ease-out;
+}
+
+@keyframes phone-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+.phone__notification-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--text-xs);
+}
+
+.phone__app {
+  font-weight: 700;
+}
+
+.phone__now {
+  color: var(--color-text-faint);
+}
+
+.phone__notification-body {
+  margin: var(--space-2) 0 var(--space-3);
+  font-size: var(--text-xs);
+  line-height: 1.5;
+}
+
+.phone__call {
+  width: 100%;
+  font-size: var(--text-xs);
+  color: var(--color-bg);
+  background: var(--color-normal);
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: var(--space-2);
+  font-weight: 600;
+}
+
+.phone__caption {
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+}
