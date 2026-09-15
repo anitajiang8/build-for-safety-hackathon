@@ -5,7 +5,6 @@ import { AlertFeed } from './components/AlertFeed';
 import { AuditLog } from './components/AuditLog';
 import { CameraTile } from './components/CameraTile';
 import { CampusMap } from './components/CampusMap';
-import { AlertDetail } from './components/AlertDetail';
 import { LandingScreen } from './components/LandingScreen';
 import { PhoneMock } from './components/PhoneMock';
 import { ScorePanel } from './components/ScorePanel';
@@ -16,9 +15,8 @@ import './App.css';
 export default function App() {
   const sim = useSimulation();
   const [showStored, setShowStored] = useState(false);
-  // Safety Alerts board -> alert triage -> live operations dashboard.
-  const [screen, setScreen] = useState<'alerts' | 'detail' | 'dashboard'>('alerts');
-  const [dispatched, setDispatched] = useState(false);
+  // Safety Alerts board -> live operations dashboard.
+  const [screen, setScreen] = useState<'alerts' | 'dashboard'>('alerts');
 
   // The camera tile watches wherever the pair of interest currently is.
   const watched = sim.featured?.follower ?? sim.currentTick.tracks[0]?.token ?? 'T-?';
@@ -27,17 +25,7 @@ export default function App() {
     ? zoneName(zoneAt(watchedTrack.x, watchedTrack.y)?.id ?? null)
     : 'Campus';
 
-  if (screen === 'alerts') return <LandingScreen onEnter={() => setScreen('detail')} />;
-  if (screen === 'detail') {
-    return (
-      <AlertDetail
-        onBack={() => setScreen('alerts')}
-        onOpenDashboard={() => setScreen('dashboard')}
-        dispatched={dispatched}
-        onDispatch={() => setDispatched(true)}
-      />
-    );
-  }
+  if (screen === 'alerts') return <LandingScreen onEnter={() => setScreen('dashboard')} />;
 
   return (
     <div className="app">
@@ -54,7 +42,7 @@ export default function App() {
         clock={sim.clock}
         tick={sim.tick}
         lastTick={sim.lastTick}
-        onBack={() => setScreen('detail')}
+        onBack={() => setScreen('alerts')}
       />
 
       <main className="app__main">
