@@ -8,8 +8,8 @@
 .phone__screen {
   width: 160px;
   min-height: 178px;
-  background: #080b0f;
-  border: 2px solid var(--color-border);
+  background: var(--color-phone-screen);
+  border: 2px solid var(--color-phone-bezel);
   border-radius: 18px;
   padding: var(--space-2) var(--space-3) var(--space-3);
   display: flex;

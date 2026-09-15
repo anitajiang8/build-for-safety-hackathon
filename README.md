@@ -127,6 +127,9 @@ Logic and UI are kept apart on purpose, and every component's styles live in its
 own file, so the Figma design can be swapped in by editing `tokens.css` plus the
 individual component stylesheets.
 
+The palette is light by default and lives entirely in `tokens.css` — no component
+hardcodes a colour, so re-theming (including back to dark) is a single-file edit.
+
 ## Notes on the model
 
 - The two scenarios are generated, not hand-typed: the walker follows a route at

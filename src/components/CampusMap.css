@@ -20,26 +20,26 @@
 }
 
 .map__zone.is-low-traffic {
-  fill: #18202b;
+  fill: var(--color-zone-alt);
   stroke-dasharray: 1 0.6;
 }
 
 .map__zone-label {
   font-size: 1.5px;
-  fill: var(--color-text-faint);
+  fill: var(--color-text-muted);
   font-family: var(--font-sans);
   letter-spacing: 0.02px;
 }
 
 .map__marker-label {
   font-size: 1.2px;
-  fill: var(--color-text-faint);
+  fill: var(--color-text-muted);
   font-family: var(--font-sans);
 }
 
 .map__sensor {
   fill: none;
-  stroke: var(--color-text-faint);
+  stroke: var(--color-text-muted);
   stroke-width: 0.25;
 }
 

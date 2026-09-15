@@ -129,11 +129,11 @@ export function AlertDetail({ onBack, onOpenDashboard, dispatched, onDispatch }:
               <div className="detail__evidence-line">2 anonymous tracks detected</div>
               <div className="detail__frame-strip" aria-hidden="true">
                 <svg className="detail__silhouette" viewBox="0 0 100 26">
-                  <rect x="0" y="0" width="100" height="26" fill="#11161d" />
-                  <circle cx="38" cy="12" r="5" fill="#39434f" />
-                  <path d="M28 26 q0 -11 10 -11 q10 0 10 11 z" fill="#39434f" />
-                  <circle cx="64" cy="13" r="4" fill="#2c343e" />
-                  <path d="M55 26 q0 -9 9 -9 q9 0 9 9 z" fill="#2c343e" />
+                  <rect className="detail__sil-bg" x="0" y="0" width="100" height="26" />
+                  <circle className="detail__sil-near" cx="38" cy="12" r="5" />
+                  <path className="detail__sil-near" d="M28 26 q0 -11 10 -11 q10 0 10 11 z" />
+                  <circle className="detail__sil-far" cx="64" cy="13" r="4" />
+                  <path className="detail__sil-far" d="M55 26 q0 -9 9 -9 q9 0 9 9 z" />
                 </svg>
                 <span className="detail__frame-label">[ blurred camera frame ]</span>
               </div>

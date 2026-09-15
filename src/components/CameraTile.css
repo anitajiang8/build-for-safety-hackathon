@@ -11,6 +11,22 @@
   border: var(--border-thin);
 }
 
+.camera__sil-bg {
+  fill: var(--color-silhouette-bg);
+}
+
+.camera__sil-floor {
+  fill: var(--color-silhouette-floor);
+}
+
+.camera__sil-near {
+  fill: var(--color-silhouette-near);
+}
+
+.camera__sil-far {
+  fill: var(--color-silhouette-far);
+}
+
 .camera__frame {
   display: block;
   width: 100%;
@@ -29,7 +45,7 @@
   left: var(--space-2);
   font-size: var(--text-xs);
   font-family: var(--font-mono);
-  background: rgba(0, 0, 0, 0.6);
+  background: var(--color-on-image);
   border-radius: var(--radius-sm);
   padding: 2px var(--space-2);
   color: var(--color-text);
@@ -40,7 +56,7 @@
   bottom: var(--space-2);
   right: var(--space-2);
   font-size: var(--text-xs);
-  background: rgba(0, 0, 0, 0.6);
+  background: var(--color-on-image);
   border-radius: var(--radius-sm);
   padding: 2px var(--space-2);
   color: var(--color-privacy);
@@ -74,7 +90,7 @@
 .camera__overlay {
   position: fixed;
   inset: 0;
-  background: rgba(3, 6, 10, 0.7);
+  background: var(--color-overlay);
   display: flex;
   align-items: center;
   justify-content: center;

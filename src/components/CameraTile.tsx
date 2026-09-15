@@ -12,12 +12,12 @@ interface Props {
 function Silhouette({ clear }: { clear: boolean }) {
   return (
     <svg className={`camera__frame${clear ? ' is-clear' : ''}`} viewBox="0 0 100 60" aria-hidden="true">
-      <rect x="0" y="0" width="100" height="60" fill="#11161d" />
-      <rect x="0" y="44" width="100" height="16" fill="#151d26" />
-      <circle cx="44" cy="24" r="7" fill="#39434f" />
-      <path d="M31 60 q0 -22 13 -22 q13 0 13 22 z" fill="#39434f" />
-      <circle cx="70" cy="26" r="6" fill="#2c343e" />
-      <path d="M59 60 q0 -19 11 -19 q11 0 11 19 z" fill="#2c343e" />
+      <rect className="camera__sil-bg" x="0" y="0" width="100" height="60" />
+      <rect className="camera__sil-floor" x="0" y="44" width="100" height="16" />
+      <circle className="camera__sil-near" cx="44" cy="24" r="7" />
+      <path className="camera__sil-near" d="M31 60 q0 -22 13 -22 q13 0 13 22 z" />
+      <circle className="camera__sil-far" cx="70" cy="26" r="6" />
+      <path className="camera__sil-far" d="M59 60 q0 -19 11 -19 q11 0 11 19 z" />
     </svg>
   );
 }

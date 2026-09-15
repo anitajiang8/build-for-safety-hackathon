@@ -4,39 +4,58 @@
  * component's own small CSS file).
  */
 :root {
+  color-scheme: light;
+
   /* Surfaces */
-  --color-bg: #0e1116;
-  --color-surface: #161b22;
-  --color-surface-2: #1c232c;
-  --color-border: #2a323d;
+  --color-bg: #faf9f6;
+  --color-surface: #ffffff;
+  --color-surface-2: #f2f0ea;
+  --color-border: #dcd8ce;
+  /* Hard offset shadow used by the wireframe screens. */
+  --color-shadow: #e3dfd3;
+  /* Scrim behind modals. */
+  --color-overlay: rgba(28, 27, 24, 0.38);
+  /* Pill backgrounds that sit on top of imagery. */
+  --color-on-image: rgba(255, 255, 255, 0.88);
 
   /* Text */
-  --color-text: #e6edf3;
-  --color-text-muted: #8b98a8;
-  --color-text-faint: #5d6977;
+  --color-text: #1c1b18;
+  --color-text-muted: #5f5c55;
+  --color-text-faint: #8d8981;
 
   /* Brand / accent */
-  --color-accent: #4c8dff;
-  --color-accent-soft: rgba(76, 141, 255, 0.16);
+  --color-accent: #1a5fb4;
+  --color-accent-soft: rgba(26, 95, 180, 0.1);
 
   /* Alert tiers */
-  --color-normal: #3fb950;
-  --color-watch: #e3b341;
-  --color-respond: #f85149;
-  --color-normal-soft: rgba(63, 185, 80, 0.14);
-  --color-watch-soft: rgba(227, 179, 65, 0.14);
-  --color-respond-soft: rgba(248, 81, 73, 0.14);
+  --color-normal: #1a7f37;
+  --color-watch: #a97400;
+  --color-respond: #c22b26;
+  --color-normal-soft: rgba(26, 127, 55, 0.11);
+  --color-watch-soft: rgba(169, 116, 0, 0.13);
+  --color-respond-soft: rgba(194, 43, 38, 0.09);
 
   /* Privacy accent (used by the "what's stored" view) */
-  --color-privacy: #a371f7;
-  --color-privacy-soft: rgba(163, 113, 247, 0.14);
+  --color-privacy: #6b3fc0;
+  --color-privacy-soft: rgba(107, 63, 192, 0.1);
 
   /* Map */
-  --color-map-bg: #10151b;
-  --color-zone: #1b2532;
-  --color-zone-stroke: #2c3949;
-  --color-track: #8b98a8;
-  --color-leader: #58a6ff;
+  --color-map-bg: #f5f3ed;
+  --color-zone: #eceae2;
+  --color-zone-alt: #e5e2d8;
+  --color-zone-stroke: #d3cfc3;
+  --color-track: #35322c;
+  --color-leader: #1a5fb4;
+
+  /* Camera silhouette placeholder */
+  --color-silhouette-bg: #e9e6dd;
+  --color-silhouette-floor: #e0ddd3;
+  --color-silhouette-near: #b4afa2;
+  --color-silhouette-far: #c6c1b5;
+
+  /* Phone mockup */
+  --color-phone-screen: #ffffff;
+  --color-phone-bezel: #2b2924;
 
   /* Spacing */
   --space-1: 4px;
@@ -63,7 +82,7 @@
 
   /* Misc */
   --border-thin: 1px solid var(--color-border);
-  --shadow-panel: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-panel: 0 1px 2px rgba(28, 27, 24, 0.06);
 }
 
 * {
