@@ -1,0 +1,255 @@
+/**
+ * Opening board. Follows the wireframe: monospace throughout, bracketed
+ * filters, and cards drawn with a hard offset shadow rather than a soft one.
+ */
+.landing {
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  padding: var(--space-6) var(--space-4);
+  font-family: var(--font-mono);
+}
+
+.landing__frame {
+  width: min(680px, 100%);
+  align-self: flex-start;
+  border: 1px solid var(--color-border);
+  box-shadow: 6px 6px 0 var(--color-surface);
+  background: var(--color-bg);
+  padding: var(--space-5);
+}
+
+/* Top bar ---------------------------------------------------------- */
+
+.landing__bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.landing__brand {
+  font-size: var(--text-md);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.landing__live {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-left: auto;
+  font-size: var(--text-sm);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.landing__live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-pill);
+  background: var(--color-normal);
+  animation: landing-blink 2s ease-in-out infinite;
+}
+
+@keyframes landing-blink {
+  50% {
+    opacity: 0.25;
+  }
+}
+
+.landing__stamp {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* Section heading --------------------------------------------------- */
+
+.landing__section {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-5) 0 var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.landing__heading {
+  margin: 0;
+  font-size: var(--text-md);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.landing__count {
+  font-size: var(--text-sm);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* Filters ----------------------------------------------------------- */
+
+.landing__filters {
+  display: flex;
+  gap: var(--space-4);
+  padding: var(--space-4) 0 var(--space-5);
+}
+
+.landing__filter {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  letter-spacing: 0.1em;
+  color: var(--color-text-faint);
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.landing__filter:hover {
+  color: var(--color-text-muted);
+}
+
+.landing__filter.is-active {
+  color: var(--color-text);
+}
+
+/* Cards ------------------------------------------------------------- */
+
+.landing__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.landing__card {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-family: var(--font-mono);
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  box-shadow: 5px 5px 0 var(--color-surface);
+  padding: var(--space-4);
+}
+
+.landing__card.is-primary {
+  cursor: pointer;
+  transition: border-color 140ms ease, box-shadow 140ms ease, transform 140ms ease;
+}
+
+.landing__card.is-primary:hover {
+  border-color: var(--color-respond);
+  box-shadow: 5px 5px 0 var(--color-respond-soft);
+  transform: translate(-1px, -1px);
+}
+
+.landing__card-head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.landing__dot {
+  width: 11px;
+  height: 11px;
+  border-radius: var(--radius-pill);
+  flex: none;
+}
+
+.landing__dot.is-high {
+  background: var(--color-respond);
+}
+.landing__dot.is-watch {
+  background: var(--color-watch);
+}
+.landing__dot.is-ok {
+  background: var(--color-normal);
+}
+
+.landing__card-title {
+  font-size: var(--text-md);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.landing__card-time {
+  margin-left: auto;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* Indent the body under the severity dot, as drawn. */
+.landing__card-body {
+  padding-left: calc(11px + var(--space-3));
+}
+
+.landing__status {
+  margin-top: var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--color-respond);
+  letter-spacing: 0.06em;
+}
+
+.landing__desc {
+  margin: var(--space-1) 0 0;
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.landing__where {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.landing__pin {
+  width: 10px;
+  height: 13px;
+  flex: none;
+  color: var(--color-respond);
+}
+
+.landing__window {
+  margin-top: var(--space-1);
+  font-size: var(--text-sm);
+  color: var(--color-text-faint);
+}
+
+.landing__card-foot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+  font-size: var(--text-sm);
+}
+
+.landing__signals {
+  color: var(--color-text-muted);
+}
+
+.landing__cta {
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.landing__empty {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--color-text-faint);
+}

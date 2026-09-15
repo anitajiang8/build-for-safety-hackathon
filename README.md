@@ -57,7 +57,11 @@ Tiers: **0–39 Normal · 40–69 Watch · 70+ Respond**.
 
 ## 60-second demo script
 
-**0:00 — Set up.** Scenario `Following incident` (11:40 PM). Press **4x**, then
+**0:00 — Opening board.** The app starts on the Safety Alerts board. The filter
+tabs work — tap `[HIGH PRIORITY]` to show just the following pattern. Click the
+**FOLLOWING PATTERN** card (or `VIEW ALERT →`) to open the operations dashboard.
+
+**0:05 — Set up.** Scenario `Following incident` (11:40 PM). Press **4x**, then
 **Play**.
 
 **0:10 — Watch fires (~tick 19).** T-2 turns yellow on the map and a dashed line
@@ -104,6 +108,7 @@ src/
     followScore.ts  Pure scoring functions — no React, no I/O
     useSimulation.ts Playback, alert emission, audit log, operator actions
   components/       One component + one CSS file each
+                    (LandingScreen.tsx is the opening Safety Alerts board)
   styles/tokens.css All colors, spacing, radius and type tokens
 ```
 

@@ -5,6 +5,7 @@ import { AlertFeed } from './components/AlertFeed';
 import { AuditLog } from './components/AuditLog';
 import { CameraTile } from './components/CameraTile';
 import { CampusMap } from './components/CampusMap';
+import { LandingScreen } from './components/LandingScreen';
 import { PhoneMock } from './components/PhoneMock';
 import { ScorePanel } from './components/ScorePanel';
 import { TopBar } from './components/TopBar';
@@ -14,6 +15,9 @@ import './App.css';
 export default function App() {
   const sim = useSimulation();
   const [showStored, setShowStored] = useState(false);
+  // The opening board is what an operator sees first; the dashboard is one
+  // click away behind the top alert.
+  const [entered, setEntered] = useState(false);
 
   // The camera tile watches wherever the pair of interest currently is.
   const watched = sim.featured?.follower ?? sim.currentTick.tracks[0]?.token ?? 'T-?';
@@ -21,6 +25,8 @@ export default function App() {
   const watchedZone = watchedTrack
     ? zoneName(zoneAt(watchedTrack.x, watchedTrack.y)?.id ?? null)
     : 'Campus';
+
+  if (!entered) return <LandingScreen onEnter={() => setEntered(true)} />;
 
   return (
     <div className="app">
