@@ -23,21 +23,21 @@ export const MAP_W = 100;
 export const MAP_H = 60;
 
 export const ZONES: Zone[] = [
-  { id: 'library', name: 'Library Entrance', x: 4, y: 36, w: 18, h: 18, lowTraffic: false },
+  { id: 'slc', name: 'Student Life Centre', x: 4, y: 36, w: 18, h: 18, lowTraffic: false },
   { id: 'quad', name: 'Arts Quad', x: 28, y: 34, w: 22, h: 20, lowTraffic: false },
   { id: 'ring', name: 'Ring Road North', x: 26, y: 18, w: 50, h: 16, lowTraffic: true },
-  { id: 'eng', name: 'Engineering Walkway', x: 56, y: 34, w: 20, h: 18, lowTraffic: true },
-  { id: 'parking', name: 'Parking Lot N', x: 4, y: 4, w: 20, h: 14, lowTraffic: true },
-  { id: 'residence', name: 'Residence Entrance', x: 80, y: 30, w: 16, h: 20, lowTraffic: false },
+  { id: 'e5', name: 'Engineering 5', x: 56, y: 34, w: 20, h: 18, lowTraffic: true },
+  { id: 'lot', name: 'Lot N', x: 4, y: 4, w: 20, h: 14, lowTraffic: true },
+  { id: 'dc', name: 'Davis Centre', x: 80, y: 30, w: 16, h: 20, lowTraffic: false },
 ];
 
 export const DOORS: Door[] = [
-  { id: 'door-res-1', name: 'Residence Hall North Door', zoneId: 'residence', x: 88, y: 40 },
+  { id: 'door-dc-west', name: 'Davis Centre West Entrance', zoneId: 'dc', x: 88, y: 40 },
 ];
 
 export const MOTION_SENSORS: MotionSensor[] = [
   { id: 'motion-ring-1', zoneId: 'ring', x: 53, y: 27 },
-  { id: 'motion-eng-1', zoneId: 'eng', x: 66, y: 43 },
+  { id: 'motion-e5-1', zoneId: 'e5', x: 66, y: 43 },
 ];
 
 /** Which zone contains a point, or null if it is in the gaps between zones. */
@@ -62,14 +62,14 @@ interface Pt {
   y: number;
 }
 
-/** The route the walker takes: Library -> Quad -> Ring Road -> Eng -> Residence. */
+/** The route the walker takes: SLC -> Arts Quad -> Ring Road -> E5 -> Davis Centre. */
 const ROUTE: Pt[] = [
-  { x: 13, y: 45 }, // Library Entrance
+  { x: 13, y: 45 }, // Student Life Centre
   { x: 38, y: 44 }, // Arts Quad
   { x: 45, y: 27 }, // down onto Ring Road North
   { x: 62, y: 27 }, // along the ring road
-  { x: 66, y: 43 }, // up the Engineering Walkway
-  { x: 88, y: 40 }, // Residence Entrance door
+  { x: 66, y: 43 }, // up past Engineering 5
+  { x: 88, y: 40 }, // Davis Centre West Entrance
 ];
 
 const SEG_LEN = ROUTE.slice(1).map((p, i) => Math.hypot(p.x - ROUTE[i].x, p.y - ROUTE[i].y));
@@ -175,7 +175,7 @@ function motionEvents(tracks: TrackState[]): SensorEvent[] {
 
 /** Ticks on which T-2 raises a phone toward T-1 (flag stays up for 2 ticks). */
 const PHONE_TICKS = [20, 36, 52];
-const BADGE_TICK = 74; // T-1 badges into the residence
+const BADGE_TICK = 74; // T-1 badges in at the Davis Centre
 const TAILGATE_TICK = 82; // T-2 slips through the same door, no badge
 
 function buildFollowingScenario(): Scenario {
@@ -232,7 +232,7 @@ function buildFollowingScenario(): Scenario {
     }
   }
 
-  const bg1 = wander('T-77', 9137, { x: 6, y: 6, w: 16, h: 10 }); // Parking Lot N
+  const bg1 = wander('T-77', 9137, { x: 6, y: 6, w: 16, h: 10 }); // Lot N
   const bg2 = wander('T-93', 4421, { x: 30, y: 36, w: 18, h: 16 }); // Arts Quad
 
   const ticks: Tick[] = [];
@@ -243,10 +243,10 @@ function buildFollowingScenario(): Scenario {
       events.push({ type: 'phone_raised', token: 'T-2', towardToken: 'T-1' });
     }
     if (t === BADGE_TICK) {
-      events.push({ type: 'badge', doorId: 'door-res-1', token: 'T-1' });
+      events.push({ type: 'badge', doorId: 'door-dc-west', token: 'T-1' });
     }
     if (t === TAILGATE_TICK) {
-      events.push({ type: 'door_open_no_badge', doorId: 'door-res-1', token: 'T-2' });
+      events.push({ type: 'door_open_no_badge', doorId: 'door-dc-west', token: 'T-2' });
     }
     ticks.push({ t, tracks, events });
   }
@@ -254,7 +254,7 @@ function buildFollowingScenario(): Scenario {
   return {
     id: 'following',
     name: 'Following incident',
-    blurb: '11:40 PM, low foot traffic. T-1 walks home from the library.',
+    blurb: '11:40 PM, low foot traffic. T-1 walks from the SLC to the Davis Centre.',
     startClock: '23:40:00',
     ticks,
   };
@@ -294,8 +294,8 @@ function buildFriendsScenario(): Scenario {
     const tracks = [a[t], b[t], bg1[t], bg2[t]];
     const events: SensorEvent[] = motionEvents(tracks);
     // Both friends badge in -- no tailgate.
-    if (t === BADGE_TICK) events.push({ type: 'badge', doorId: 'door-res-1', token: 'T-3' });
-    if (t === BADGE_TICK + 2) events.push({ type: 'badge', doorId: 'door-res-1', token: 'T-4' });
+    if (t === BADGE_TICK) events.push({ type: 'badge', doorId: 'door-dc-west', token: 'T-3' });
+    if (t === BADGE_TICK + 2) events.push({ type: 'badge', doorId: 'door-dc-west', token: 'T-4' });
     ticks.push({ t, tracks, events });
   }
 

@@ -78,7 +78,7 @@ function stdDev(xs: number[]): number {
 export interface TrackHistory {
   token: string;
   states: TrackState[];
-  /** Compressed zone sequence, e.g. ["library", "quad", "ring"]. */
+  /** Compressed zone sequence, e.g. ["slc", "quad", "ring"]. */
   zoneSeq: string[];
   /** Tick on which each zone in `zoneSeq` was first entered. */
   zoneEntry: number[];

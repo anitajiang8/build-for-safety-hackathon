@@ -74,7 +74,7 @@ holding a ~11 unit gap that barely varies.
 
 **0:20 — Respond fires (~tick 36).** T-2 turns red and pulses. Read the alert
 card: *"T-2 has followed T-1 across 3 zones."* Note this happens **while she is
-still on the Ring Road**, long before she reaches her residence at tick 67.
+still on Ring Road**, long before she reaches the Davis Centre at tick 67.
 
 **0:30 — Show the "why".** The breakdown is the pitch: zone continuity climbing
 to 4 zones, mirroring showing she stopped at tick 40 and he stopped at 41, phone
@@ -125,7 +125,11 @@ hardcodes a colour, so re-theming (including back to dark) is a single-file edit
 
 ## Notes on the model
 
-- The two scenarios are generated, not hand-typed: the walker follows a route at
+- Zones are named for real University of Waterloo locations — Student Life Centre,
+Arts Quad, Ring Road North, Engineering 5, Lot N and the Davis Centre — so the
+Safety Alerts board and the live map describe the same campus.
+
+The two scenarios are generated, not hand-typed: the walker follows a route at
   a fixed pace with a scripted pause, and the follower runs a **pursuit curve** —
   he steers at where she was a moment ago and regulates his speed to hold a
   constant gap. That one rule reproduces the behaviour a tail actually shows.

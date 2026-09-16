@@ -164,7 +164,7 @@ export function useSimulation() {
       if (action === 'Notify walker (opt-in)') {
         setPhone({
           title: 'Campus Safety',
-          body: 'Security has been alerted and is nearby. Residence Entrance is 1 minute ahead.',
+          body: 'Security has been alerted and is nearby. The Davis Centre is 1 minute ahead.',
         });
       }
     },
